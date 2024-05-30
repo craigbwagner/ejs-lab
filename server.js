@@ -64,4 +64,22 @@ app.get('/menu', (req, res) => {
 	res.render('menu.ejs', RESTAURANT);
 });
 
+app.get('/menu/:category', (req, res) => {
+	let mains = RESTAURANT.menu.filter((item) => item.category === 'mains');
+	let desserts = RESTAURANT.menu.filter(
+		(item) => item.category === 'desserts'
+	);
+	let sides = RESTAURANT.menu.filter((item) => item.category === 'sides');
+
+	if (req.params.category === 'mains') {
+		res.render('category.ejs', mains);
+	}
+	if (category === 'desserts') {
+		res.render('category.ejs', desserts);
+	}
+	if (category === 'sides') {
+		res.render('category.ejs', sides);
+	}
+});
+
 app.listen(3002);
