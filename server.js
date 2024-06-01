@@ -72,13 +72,22 @@ app.get('/menu/:category', (req, res) => {
 	let sides = RESTAURANT.menu.filter((item) => item.category === 'sides');
 
 	if (req.params.category === 'mains') {
-		res.render('category.ejs', mains);
+		res.render('category.ejs', {
+			category: req.params.category,
+			dishes: mains,
+		});
 	}
-	if (category === 'desserts') {
-		res.render('category.ejs', desserts);
+	if (req.params.category === 'desserts') {
+		res.render('category.ejs', {
+			category: req.params.category,
+			dishes: desserts,
+		});
 	}
-	if (category === 'sides') {
-		res.render('category.ejs', sides);
+	if (req.params.category === 'sides') {
+		res.render('category.ejs', {
+			category: req.params.category,
+			dishes: sides,
+		});
 	}
 });
 
